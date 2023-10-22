@@ -71,7 +71,7 @@ def welcome():
         f"--------------------------------------<br/>"
         f"/api/v1.0/Tokyo<br/>"
         f"--------------------------------------<br/>"
-        f"/api/v1.0/Mexico City<br/>"
+        f"/api/v1.0/MexicoCity<br/>"
         f"--------------------------------------<br/>"
         f"--------------------------------------<br/>"
         f"Top 5 most polluted cities<br/>"
@@ -185,7 +185,7 @@ def tky():
 
     return jsonify(years_tky_data)
 
-@app.route("/api/v1.0/Mexico City")
+@app.route("/api/v1.0/MexicoCity")
 def mxc():
 
     # session (link) from Python to the DB
