@@ -63,7 +63,7 @@ def welcome():
         f"Top 5 most polluted cities<br/>"
         f"--------------------------------------<br/>"
         f"Available Routes:<br/>"
-        f"/api/v1.0/New York City<br/>"
+        f"/api/v1.0/NewYorkCity<br/>"
         f"--------------------------------------<br/>"
         f"/api/v1.0/Beijing<br/>"
         f"--------------------------------------<br/>"
@@ -93,7 +93,7 @@ def welcome():
         f"For start_date/end_date queries please format:YYYY-MM-DD,YYYY-MM-DD"
     )
 
-@app.route("/api/v1.0/New York City")
+@app.route("/api/v1.0/NewYorkCity")
 def nyc():
 
     # session (link) from Python to the DB
