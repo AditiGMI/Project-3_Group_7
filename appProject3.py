@@ -94,7 +94,7 @@ def welcome():
     )
 
 @app.route("/api/v1.0/New York City")
-def precipitation():
+def nyc():
 
     # session (link) from Python to the DB
     session = Session(engine)
@@ -117,7 +117,7 @@ def precipitation():
     return jsonify(years_nyc_data)
 
 @app.route("/api/v1.0/Beijing")
-def precipitation():
+def bjg():
 
     # session (link) from Python to the DB
     session = Session(engine)
@@ -140,7 +140,7 @@ def precipitation():
     return jsonify(years_bjg_data)
 
 @app.route("/api/v1.0/London")
-def precipitation():
+def lnd():
 
     # session (link) from Python to the DB
     session = Session(engine)
@@ -155,15 +155,15 @@ def precipitation():
     for date, temp, prcp in results:
         lnd_dict = {}
         lnd_dict["date"] = date
-        lnd_dict["bjg_max_temp"] = temp
-        lnd_dict["bjg_prcp"] = prcp
+        lnd_dict["lnd_max_temp"] = temp
+        lnd_dict["lnd_prcp"] = prcp
         years_lnd_data.append(lnd_dict)
-    print("Years of Beijing weather Data:", years_lnd_data)
+    print("Years of London weather Data:", years_lnd_data)
 
     return jsonify(years_lnd_data)
 
 @app.route("/api/v1.0/Tokyo")
-def precipitation():
+def tky():
 
     # session (link) from Python to the DB
     session = Session(engine)
@@ -178,15 +178,15 @@ def precipitation():
     for date, temp, prcp in results:
         tky_dict = {}
         tky_dict["date"] = date
-        tky_dict["bjg_max_temp"] = temp
-        tky_dict["bjg_prcp"] = prcp
+        tky_dict["tky_max_temp"] = temp
+        tky_dict["tky_prcp"] = prcp
         years_tky_data.append(tky_dict)
-    print("Years of Beijing weather Data:", years_tky_data)
+    print("Years of Tokyo weather Data:", years_tky_data)
 
     return jsonify(years_tky_data)
 
 @app.route("/api/v1.0/Mexico City")
-def precipitation():
+def mxc():
 
     # session (link) from Python to the DB
     session = Session(engine)
@@ -201,10 +201,10 @@ def precipitation():
     for date, temp, prcp in results:
         mxc_dict = {}
         mxc_dict["date"] = date
-        mxc_dict["bjg_max_temp"] = temp
-        mxc_dict["bjg_prcp"] = prcp
+        mxc_dict["mxc_max_temp"] = temp
+        mxc_dict["mxc_prcp"] = prcp
         years_mxc_data.append(mxc_dict)
-    print("Years of Beijing weather Data:", years_mxc_data)
+    print("Years of Mexico City weather Data:", years_mxc_data)
 
     return jsonify(years_mxc_data)
 
