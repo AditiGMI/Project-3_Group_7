@@ -13,7 +13,7 @@ from flask import Flask, jsonify
 
 # Creating class
 class Weather(Base):
-    __tablename__ = 'weather_data'
+    __tablename__ = 'weather'
     date = Column(Date, primary_key=True)
     nyc_max_temp = Column(Integer)
     nyc_prcp = Column(Integer)
@@ -60,10 +60,30 @@ def welcome():
     """List all available api routes."""
     return (
         f"Welcome to the Climate Observations API!<br/>"
+        f"Top 5 most polluted cities<br/>"
         f"--------------------------------------<br/>"
         f"Available Routes:<br/>"
         f"/api/v1.0/New York City<br/>"
-        f"/api/v1.0/fun<br/>"
+        f"--------------------------------------<br/>"
+        f"/api/v1.0/Beijing<br/>"
+        f"--------------------------------------<br/>"
+        f"/api/v1.0/london<br/>"
+        f"--------------------------------------<br/>"
+        f"/api/v1.0/Tokyo<br/>"
+        f"--------------------------------------<br/>"
+        f"/api/v1.0/Mexico City<br/>"
+        f"--------------------------------------<br/>"
+        f"--------------------------------------<br/>"
+        f"Top 5 most polluted cities<br/>"
+        f"/api/v1.0/Zurich<br/>"
+        f"--------------------------------------<br/>"
+        f"/api/v1.0/Honolulu<br/>"
+        f"--------------------------------------<br/>"
+        f"/api/v1.0/Reykjavik<br/>"
+        f"--------------------------------------<br/>"
+        f"/api/v1.0/Hobart<br/>"
+        f"--------------------------------------<br/>"
+        f"/api/v1.0/Funchal<br/>"
         f"--------------------------------------<br/>"
         f"For start_date queries please format:YYYY-MM-DD<br/>"
         f"For start_date/end_date queries please format:YYYY-MM-DD,YYYY-MM-DD"
@@ -91,6 +111,29 @@ def precipitation():
     print("Years of  NYC weather Data:", years_nyc_data)
 
     return jsonify(years_nyc_data)
+
+@app.route("/api/v1.0/Beijing")
+def precipitation():
+
+    # session (link) from Python to the DB
+    session = Session(engine)
+    
+    results = session.query(Weather.date, Weather.bjg_max_temp, Weather.bjg_prcp).all()
+    print("Results:", results) 
+
+    session.close()
+
+    # Creating a dictionary from the raw data
+    years_bjg_data= []
+    for date, temp, prcp in results:
+        bjg_dict = {}
+        bjg_dict["date"] = date
+        bjg_dict["bjg_max_temp"] = temp
+        bjg_dict["bjg_prcp"] = prcp
+        years_bjg_data.append(bjg_dict)
+    print("Years of Beijing weather Data:", years_bjg_data)
+
+    return jsonify(years_bjg_data)
 
 if __name__ == '__main__':
     app.run()
