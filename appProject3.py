@@ -85,6 +85,10 @@ def welcome():
         f"--------------------------------------<br/>"
         f"/api/v1.0/Funchal<br/>"
         f"--------------------------------------<br/>"
+        f"--------------------------------------<br/>"
+        f"/api/v1.0/All Cities All Data<br/>"
+        f"--------------------------------------<br/>"
+        f"--------------------------------------<br/>"
         f"For start_date queries please format:YYYY-MM-DD<br/>"
         f"For start_date/end_date queries please format:YYYY-MM-DD,YYYY-MM-DD"
     )
@@ -134,6 +138,75 @@ def precipitation():
     print("Years of Beijing weather Data:", years_bjg_data)
 
     return jsonify(years_bjg_data)
+
+@app.route("/api/v1.0/London")
+def precipitation():
+
+    # session (link) from Python to the DB
+    session = Session(engine)
+    
+    results = session.query(Weather.date, Weather.lnd_max_temp, Weather.lnd_prcp).all()
+    print("Results:", results) 
+
+    session.close()
+
+    # Creating a dictionary from the raw data
+    years_lnd_data= []
+    for date, temp, prcp in results:
+        lnd_dict = {}
+        lnd_dict["date"] = date
+        lnd_dict["bjg_max_temp"] = temp
+        lnd_dict["bjg_prcp"] = prcp
+        years_lnd_data.append(lnd_dict)
+    print("Years of Beijing weather Data:", years_lnd_data)
+
+    return jsonify(years_lnd_data)
+
+@app.route("/api/v1.0/Tokyo")
+def precipitation():
+
+    # session (link) from Python to the DB
+    session = Session(engine)
+    
+    results = session.query(Weather.date, Weather.tky_max_temp, Weather.tky_prcp).all()
+    print("Results:", results) 
+
+    session.close()
+
+    # Creating a dictionary from the raw data
+    years_tky_data= []
+    for date, temp, prcp in results:
+        tky_dict = {}
+        tky_dict["date"] = date
+        tky_dict["bjg_max_temp"] = temp
+        tky_dict["bjg_prcp"] = prcp
+        years_tky_data.append(tky_dict)
+    print("Years of Beijing weather Data:", years_tky_data)
+
+    return jsonify(years_tky_data)
+
+@app.route("/api/v1.0/Mexico City")
+def precipitation():
+
+    # session (link) from Python to the DB
+    session = Session(engine)
+    
+    results = session.query(Weather.date, Weather.mxc_max_temp, Weather.mxc_prcp).all()
+    print("Results:", results) 
+
+    session.close()
+
+    # Creating a dictionary from the raw data
+    years_mxc_data= []
+    for date, temp, prcp in results:
+        mxc_dict = {}
+        mxc_dict["date"] = date
+        mxc_dict["bjg_max_temp"] = temp
+        mxc_dict["bjg_prcp"] = prcp
+        years_mxc_data.append(mxc_dict)
+    print("Years of Beijing weather Data:", years_mxc_data)
+
+    return jsonify(years_mxc_data)
 
 if __name__ == '__main__':
     app.run()
