@@ -1,5 +1,6 @@
 import numpy as np
 import datetime as dt
+import requests
 
 import sqlalchemy
 from sqlalchemy.ext.declarative import declarative_base
@@ -86,7 +87,7 @@ def welcome():
         f"/api/v1.0/Funchal<br/>"
         f"--------------------------------------<br/>"
         f"--------------------------------------<br/>"
-        f"/api/v1.0/All Cities All Data<br/>"
+        f"/api/v1.0/AllCitiesallData<br/>"
         f"--------------------------------------<br/>"
         f"--------------------------------------<br/>"
         f"For start_date queries please format:YYYY-MM-DD<br/>"
@@ -207,6 +208,37 @@ def mxc():
     print("Years of Mexico weather Data:", years_mxc_data)
 
     return jsonify(years_mxc_data)
+
+@app.route('/api/v1.0/AllCitiesallData')
+def get_merged_data():
+    # Fetch data from API 1
+    api1_data = requests.get('http://127.0.0.1:5000/api/v1.0/NewYorkCity').json()
+
+    # Fetch data from API 2
+    api2_data = requests.get('http://127.0.0.1:5000/api/v1.0/Beijing').json()
+
+    # Fetch data from API 3
+    api3_data = requests.get('http://127.0.0.1:5000/api/v1.0/London').json()
+
+    # Fetch data from API 4
+    api4_data = requests.get('http://127.0.0.1:5000/api/v1.0/Tokyo').json()
+
+    # Fetch data from API 4
+    api5_data = requests.get('http://127.0.0.1:5000/api/v1.0/MexicoCity').json()
+
+
+
+
+    # Merge the data as needed
+    merged_data = {
+        'api1_data': api1_data,
+        'api2_data': api2_data,
+        'api3_data': api3_data,
+        'api4_data': api4_data,
+        'api5_data': api5_data
+    }
+
+    return jsonify(merged_data)
 
 if __name__ == '__main__':
     app.run()
