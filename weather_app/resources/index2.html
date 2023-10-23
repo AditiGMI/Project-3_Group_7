@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Weather Dashboard</h1>
+    <!-- Dropdown menu for cities -->
+    <select id="cityDropdown">
+        <option value="NewYorkCity">New York City</option>
+        <option value="Beijing">Beijing</option>
+        <option value="London">London</option>
+        <option value="Tokyo">Tokyo</option>
+        <option value="MexicoCity">Mexico City</option>
+    </select>
+    <!-- Bar chart container -->
+    <div id="barChart"></div>
+    <!-- Line chart container -->
+    <div id="lineChart"></div>
+    <!-- Metadata display -->
+    <div id="metadata"></div>
+    <!-- JavaScript to fetch and load data -->
+    <script>
+        fetch("nycdata.json")
+            .then(response => response.json())
+            .then(data => {
+                weatherData.NewYorkCity.data = data;
+            });
+        fetch("bjgdata.json")
+            .then(response => response.json())
+            .then(data => {
+                weatherData.Beijing.data = data;
+            });
+        fetch("lnddata.json")
+            .then(response => response.json())
+            .then(data => {
+                weatherData.London.data = data;
+            });
+        fetch("tkydata.json")
+            .then(response => response.json())
+            .then(data => {
+                weatherData.Tokyo.data = data;
+            });
+        fetch("mxcdata.json")
+            .then(response => response.json())
+            .then(data => {
+                weatherData.MexicoCity.data = data;
+            });
+    </script>
+    <!-- Your existing JavaScript file -->
+    <script src="logicProject3-3.js"></script>
+</body>
+</html>
