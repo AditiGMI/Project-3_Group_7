@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <!-- Include D3 and Plotly libraries -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Weather Dashboard</h1>
+
+    <!-- Dropdown menu for cities -->
+    <select id="cityDropdown">
+        <option value="NewYorkCity">New York City</option>
+        <option value="Beijing">Beijing</option>
+        <option value="London">London</option>
+        <option value="Tokyo">Tokyo</option>
+        <option value="MexicoCity">Mexico City</option>
+    </select>
+
+    <!-- Bar chart container -->
+    <div id="barChart"></div>
+
+    <!-- Line chart container -->
+    <div id="lineChart"></div>
+
+    <!-- Metadata display -->
+    <div id="metadata"></div>
+
+    <script>
+        // Step 1: Read weather_data.json with D3
+        d3.json("weather_data.json").then(function(data) {
+            // Step 2: Create the dropdown menu
+            const cityDropdown = d3.select("#cityDropdown");
+            
+            // Step 3: Create a bar chart
+            function createBarChart(cityData) {
+                // Define x and y values for the bar chart
+                const x = cityData.map(d => d.date);
+                const y = cityData.map(d => d.nyc_prcp);
+                
+                const barData = {
+                    type: "bar",
+                    x: x,
+                    y: y,
+                };
+                
+                const barLayout = {
+                    title: "Precipitation",
+                    xaxis: { title: "Date" },
+                };
+                
+                Plotly.newPlot("barChart", [barData], barLayout);
+            }
+
+            // Step 4: Create a line chart
+            function createLineChart(cityData) {
+                // Define x and y values for the line chart
+                const x = cityData.map(d => d.date);
+                const y = cityData.map(d => d.nyc_temp);
+                
+                const lineData = {
+                    type: "line",
+                    x: x,
+                    y: y,
+                };
+                
+                const lineLayout = {
+                    title: "Temperature",
+                    xaxis: { title: "Date" },
+                };
+                
+                Plotly.newPlot("lineChart", [lineData], lineLayout);
+            }
+
+            // Step 5: Display metadata
+            function displayMetadata(metadata) {
+                const metadataDiv = d3.select("#metadata");
+                metadataDiv.html(""); // Clear previous metadata
+
+                Object.entries(metadata).forEach(([key, value]) => {
+                    metadataDiv.append("p").text(`${key}: ${value}`);
+                });
+            }
+
+            // Step 6: Update all plots when a new sample is selected
+            cityDropdown.on("change", function() {
+                const selectedCity = this.value;
+                const cityData = data[selectedCity];
+                createBarChart(cityData);
+                createLineChart(cityData);
+                displayMetadata(cityData.metadata);
+            });
+
+            // Initialize the dashboard with the first city (e.g., New York City)
+            const initialCity = cityDropdown.property("value");
+            const initialCityData = data[initialCity];
+            createBarChart(initialCityData);
+            createLineChart(initialCityData);
+            displayMetadata(initialCityData.metadata);
+        });
+    </script>
+</body>
+</html>
