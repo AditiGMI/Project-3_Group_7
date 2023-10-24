@@ -56,5 +56,7 @@ Feel free to customize and enhance this project as needed for your own purposes 
 •	Ali Shanaa
 •	Rafael Martinez 
 
+Thank you to our Instructor, TAs and Tutor to guide us on this project.
+
 Thank you for checking out our Climate Analysis project!
 
