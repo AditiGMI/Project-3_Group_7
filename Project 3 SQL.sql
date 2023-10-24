@@ -25,7 +25,7 @@ Select * From Major_Cities
 Drop Table Small_Cities
 
 CREATE TABLE Small_Cities(
-    Zurich DATE NOT NULL as Zurich,
+    Zurich DATE NOT NULL,
     Zurich_Carbon_Monoxide INT NOT NULL,
     Zurich_UV_Index FLOAT NOT NULL,
     Honolulu DATE NOT NULL,
