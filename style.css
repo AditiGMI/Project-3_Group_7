@@ -1,0 +1,42 @@
+body {
+  padding: 0.5;
+  margin: 0.5;
+}
+
+
+#gif-container {
+  width: 300px;
+  height: 150px;
+  overflow: hidden;
+  position: relative;
+}
+
+#frame {
+  width: 100%;
+  animation: sparkle 1s infinite;
+}
+
+@keyframes sparkle {
+  0% {
+      opacity: 0;
+  }
+  20% {
+      opacity: 1;
+  }
+  40% {
+      opacity: 0;
+  }
+  200% {
+      opacity: 0;
+  }
+}
+
+#map,
+body,
+html {
+  height: 100%;
+}
+
+h1 {
+  text-align: center;
+}
