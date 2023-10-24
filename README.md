@@ -41,7 +41,7 @@ To access the web interface and explore climate data for the selected cities, fo
 1. Clone this repository to your local machine.
 2. Ensure you have Python and Flask installed.
 3. Run the Flask application using the provided Python script.
-5. Esure all flies and fold path are setup appropriately.
+5. Esure all files and folds path are setup appropriately.
 4. Open your web browser and navigate to the local server address provided by the Flask app.
 5. Explore the interactive climate data, including temperature, precipitation, CO emissions, and UV index for the specified cities.
 
