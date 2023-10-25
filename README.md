@@ -60,3 +60,15 @@ Thank you to our Instructor, TAs and Tutor to guide us on this project.
 
 Thank you for checking out our Climate Analysis project!
 
+Sources: 
+Historic Temp, precipitation, and sea level for cities (New York, Beijing, London, Tokyo, Mexico City) 10yrs
+https://archive-api.open-meteo.com/v1/archive?latitude=40.71,39.9,51.5,35.67,19.43&longitude=74,116.4,0.12,139.65,99.13&start_date=2010-01-01&end_date=2019-12-31&hourly=pressure_msl&daily=temperature_2m_max,precipitation_sum&timezone=America%2FNew_York
+
+Co emissions and UV index (New York, Beijing, London, Tokyo, Mexico City) 1yr
+https://air-quality-api.open-meteo.com/v1/air-quality?latitude=40.71,39.9,51.5,35.67,19.43&longitude=74,116.4,0.12,139.65,99.13&hourly=carbon_monoxide,uv_index&start_date=2022-10-01&end_date=2023-10-01
+
+Co emissions and UV index (Zurich, Honolulu, Reykjavik, Hobart, Funchal) 1yr
+https://air-quality-api.open-meteo.com/v1/air-quality?latitude=47.37,21.3,64.14,-42.88,32.65&longitude=8.54,157.85,-21.94,147.32,16.9&hourly=carbon_monoxide,uv_index&timezone=America%2FNew_York&start_date=2022-10-01&end_date=2023-10-01
+
+Historic Temp, precipitation, and sea level for cities (Zurich, Honolulu, Reykjavik, Hobart, Funchal) 10yrs
+https://archive-api.open-meteo.com/v1/archive?latitude=47.37,21.3,64.14,-42.88,32.65&longitude=8.54,157.85,-21.94,147.32,16.9&start_date=2010-01-01&end_date=2019-12-31&hourly=pressure_msl&daily=temperature_2m_max,precipitation_sum&timezone=America%2FNew_York
