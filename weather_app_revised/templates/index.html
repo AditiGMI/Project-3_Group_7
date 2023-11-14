@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Climate Analysis</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <!-- Leaflet JavaScript code -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <!-- Our CSS -->
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+</head>
+
+<body>
+    <h1><strong>Welcome to Climate Analysis</strong></h1>
+    <h4>This interactive dashboard provides a decade of historical daily data from January 1, 2010, to December 31, 2019, covering temperature and precipitation.</h4>
+         <h4>Select from ten major cities, including the five most and least polluted.</h4>
+         <h4>Explore visualizations for maximum temperature and precipitation using a decade's data.</h4>
+    <h4>The world map displays cities and their past year population, average CO emissions, and average UV index</h4>
+
+    <div id="gif-container">
+        <a href="https://github.com/AditiGMI/Project-3_Group_7" target="_blank" class="image-link">
+            <img id="frame" src="Bootcamp Red Zoom Background.png" alt="Click here for GitHub code link">
+        </a>
+    </div>
+
+    <h3>Crazy Weather!</h3>
+    <h6>'Gif source https://dribbble.com/shots/8498294-Crazy-Weather'</h6>
+    <h6>'Gif creator Noor Khlil'</h6>
+    <img alt="Crazy Weather!" width="366" height="279" data-id="8498294" data-animated-url="https://cdn.dribbble.com/users/2277649/screenshots/8498294/media/1f87fae49becc4fac866d70cbb5eca37.gif" skip_resize="true" srcset="https://cdn.dribbble.com/users/2277649/screenshots/8498294/media/1f87fae49becc4fac866d70cbb5eca37.gif 320w, https://cdn.dribbble.com/users/2277649/screenshots/8498294/media/1f87fae49becc4fac866d70cbb5eca37.gif 400w, https://cdn.dribbble.com/users/2277649/screenshots/8498294/media/1f87fae49becc4fac866d70cbb5eca37.gif 450w, https://cdn.dribbble.com/users/2277649/screenshots/8498294/media/1f87fae49becc4fac866d70cbb5eca37.gif 640w, https://cdn.dribbble.com/users/2277649/screenshots/8498294/media/1f87fae49becc4fac866d70cbb5eca37.gif 700w, https://cdn.dribbble.com/users/2277649/screenshots/8498294/media/1f87fae49becc4fac866d70cbb5eca37.gif 800w, https://cdn.dribbble.com/users/2277649/screenshots/8498294/media/1f87fae49becc4fac866d70cbb5eca37.gif 768w" sizes="(max-width: 919px) 100vw, max(768px, 98vh)" src="https://cdn.dribbble.com/users/2277649/screenshots/8498294/media/1f87fae49becc4fac866d70cbb5eca37.gif">
+    
+    <select id="cityDropdown" onchange="optionChanged(this.value)"></select>
+    <br></br>
+
+    <h4>"Daily Max Temperature for above selected city"</h4>
+    <div id="lineChart"></div>
+    <br></br>
+
+
+    <h4>"precipitation Data for above selected city"</h4>
+    <div id="barChart"></div>
+
+    <br></br>
+    
+    <div id="metadata"></div>
+    <h4>"World Map! Cities with Population, CO emission, and UV index"</h4>
+    <div id="map"></div>
+    <h4>"Thank you for visiting this webpage! Have a nice day!"</h4>
+      
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/logicProject3.js') }}">
+ 
+</script> 
+</body>
+</html>
